@@ -1,1 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mansha's Calculator</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            user-select: none;
+        }
+        body {
+            background: #fce7f3;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Courier New', 'Fira Code', monospace;
+            margin: 0;
+            padding: 20px;
+        }
+        .calculator {
+            background: #1e1b4b;
+            padding: 1.5rem;
+            border-radius: 2rem;
+            box-shadow: 0 25px 40px -12px rgba(0,0,0,0.4);
+            width: 100%;
+            max-width: 380px;
+        }
+        .display {
+            background: #2d2a5e;
+            color: #facc15;
+            font-size: 2.5rem;
+            text-align: right;
+            padding: 1rem;
+            border-radius: 1.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            word-wrap: break-word;
+            min-height: 80px;
+            font-family: monospace;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+        button {
+            background: #334155;
+            border: none;
+            color: white;
+            font-size: 1.8rem;
+            padding: 1rem 0;
+            border-radius: 1rem;
+            cursor: pointer;
+            transition: 0.1s linear;
+            font-weight: 600;
+        }
+        button:active {
+            transform: scale(0.96);
+            background: #475569;
+        }
+        .operator {
+            background: #8b5cf6;
+            color: #0f172a;
+        }
+        .equal {
+            background: #06b6d4;
+            grid-column: span 2;
+        }
+        .clear {
+            background: #f43f5e;
+            color: white;
+        }
+        .zero {
+            grid-column: span 2;
+        }
+        @media (max-width: 450px) {
+            button {
+                font-size: 1.4rem;
+                padding: 0.8rem 0;
+            }
+            .calculator {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="calculator">
+    <div class="display" id="display">0</div>
+    <div class="buttons">
+        <button class="clear" data-clear>AC</button>
+        <button class="operator" data-op="/">÷</button>
+        <button class="operator" data-op="*">×</button>
+        <button class="operator" data-op="-">–</button>
 
+        <button data-num="7">7</button>
+        <button data-num="8">8</button>
+        <button data-num="9">9</button>
+        <button class="operator" data-op="+">+</button>
+
+        <button data-num="4">4</button>
+        <button data-num="5">5</button>
+        <button data-num="6">6</button>
+        <button class="equal" data-equals>=</button>
+
+        <button data-num="1">1</button>
+        <button data-num="2">2</button>
+        <button data-num="3">3</button>
+
+        <button data-num="0" class="zero">0</button>
+        <button data-num=".">.</button>
+    </div>
+</div>
+
+<script>
+    // simple, human-like calculator logic – no eval, uses basic operations
+    let currentInput = '0';
+    let previousInput = null;
+    let currentOperator = null;
+    let waitingForNewOperand = false;
+
+    const display = document.getElementById('display');
+
+    function updateDisplay() {
+        display.innerText = currentInput;
+    }
+
+    function inputNumber(num) {
+        if (waitingForNewOperand) {
+            currentInput = String(num);
+            waitingForNewOperand = false;
+        } else {
+            if (currentInput === '0' && num !== '.') {
+                currentInput = String(num);
+            } else {
+                currentInput = currentInput + String(num);
+            }
+        }
+        updateDisplay();
+    }
+
+    function inputDecimal() {
+        if (waitingForNewOperand) {
+            currentInput = '0.';
+            waitingForNewOperand = false;
+            updateDisplay();
+            return;
+        }
+        if (!currentInput.includes('.')) {
+            currentInput = currentInput + '.';
+            updateDisplay();
+        }
+    }
+
+    function clearAll() {
+        currentInput = '0';
+        previousInput = null;
+        currentOperator = null;
+        waitingForNewOperand = false;
+        updateDisplay();
+    }
+
+    function compute() {
+        if (currentOperator === null || previousInput === null) return;
+        let result;
+        const prev = parseFloat(previousInput);
+        const current = parseFloat(currentInput);
+        if (isNaN(prev) || isNaN(current)) return;
+
+        switch (currentOperator) {
+            case '+': result = prev + current; break;
+            case '-': result = prev - current; break;
+            case '*': result = prev * current; break;
+            case '/': 
+                if (current === 0) {
+                    result = "Error";
+                } else {
+                    result = prev / current;
+                }
+                break;
+            default: return;
+        }
+        if (result === "Error") {
+            currentInput = "Err";
+            previousInput = null;
+            currentOperator = null;
+            waitingForNewOperand = true;
+            updateDisplay();
+            return;
+        }
+        currentInput = String(Math.round(result * 1000000) / 1000000);
+        previousInput = null;
+        currentOperator = null;
+        waitingForNewOperand = true;
+        updateDisplay();
+    }
+
+    function handleOperator(op) {
+        if (currentOperator !== null && !waitingForNewOperand) {
+            compute();
+        }
+        previousInput = currentInput;
+        currentOperator = op;
+        waitingForNewOperand = true;
+    }
+
+    // event listeners via delegation
+    document.querySelector('.buttons').addEventListener('click', (e) => {
+        const btn = e.target;
+        if (!btn.matches('button')) return;
+
+        if (btn.hasAttribute('data-num')) {
+            const val = btn.getAttribute('data-num');
+            if (val === '.') inputDecimal();
+            else inputNumber(val);
+        }
+        else if (btn.hasAttribute('data-op')) {
+            const op = btn.getAttribute('data-op');
+            handleOperator(op);
+        }
+        else if (btn.hasAttribute('data-clear')) {
+            clearAll();
+        }
+        else if (btn.hasAttribute('data-equals')) {
+            if (currentOperator && !waitingForNewOperand) {
+                compute();
+            }
+            currentOperator = null;
+            waitingForNewOperand = true;
+        }
+    });
+</script>
+  <div style="text-align: center; margin-top: 20px; font-family: monospace; color: #475569;">
+    Built by Mansha Pandey | Web Dev Internship Task
+</div>
+</body>
+</html>
