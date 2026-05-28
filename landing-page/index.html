@@ -1,1 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevate – modern landing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background: #ffffff;
+            color: #111827;
+        }
+        /* header */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #f97316, #dc2626);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #374151;
+            font-weight: 500;
+        }
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(145deg, #fff7ed 0%, #ffedd5 100%);
+        }
+        .hero h1 {
+            font-size: 3rem;
+            max-width: 800px;
+            margin: 0 auto 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: #4b5563;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        .btn {
+            background: #ea580c;
+            color: white;
+            padding: 12px 32px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+        }
+        /* columns / features */
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .feature-card {
+            background: #f9fafb;
+            border-radius: 24px;
+            padding: 2rem;
+            flex: 1;
+            min-width: 220px;
+            text-align: center;
+            transition: all 0.2s;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+        }
+        .feature-card:hover {
+            transform: scale(1.02);
+            background: white;
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .cta-section {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+        .footer {
+            background: #1f2937;
+            color: #9ca3af;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 700px) {
+            .navbar {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
 
+<div class="navbar">
+    <div class="logo">Mansha Designs ✨</div>
+    <div class="nav-links">
+        <a href="#">Home</a>
+        <a href="#">Features</a>
+        <a href="#">Pricing</a>
+        <a href="#">Contact</a>
+    </div>
+</div>
+
+<div class="hero">
+    <h1>Create stunning website with ease</h1>
+    <p>Modern, responsive landing page built with HTML& CSS.</p>
+    <a href="#" class="btn">Learn More →</a>
+</div>
+
+<!-- columns / divided sections -->
+<div class="features">
+    <div class="feature-card">
+        <div class="feature-icon">🚀</div>
+    <h3>Lightning fast</h3>
+    <p>Optimized for speed and performance.</p>
+</div></div>
+        <h3>Lightning fast</h3>
+        <p>Optimized for speed and performance.</p>
+    </div>
+    <div class="feature-card">
+        <div class="feature-icon">🎨</div>
+        <h3>Fully customizable</h3>
+        <p>Flexible layouts, columns, and color palettes to match your brand.</p>
+    </div>
+    <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h3>Responsive design</h3>
+        <p>Looks perfect on desktop, tablet, and mobile without extra work.</p>
+    </div>
+</div>
+
+<section style="padding: 3rem 2rem; text-align: center; background: #fef9c3;">
+    <h2>Ready to impress your audience?</h2>
+    <p style="margin: 1rem 0;">Join thousands of creators using our template.</p>
+    <a href="#" class="btn" style="background: #2563eb;">Get started now</a>
+</section>
+
+<div class="cta-section">
+    <h3>Limited spots for early access</h3>
+    <p style="margin: 1rem 0;">Subscribe to get notified when we launch.</p>
+    <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+        <input type="email" placeholder="Your email" style="padding: 10px; border-radius: 40px; border: none; width: 240px;">
+        <button style="background: #f97316; border: none; padding: 10px 24px; border-radius: 40px; font-weight: bold;">Notify me</button>
+    </div>
+</div>
+
+<footer class="footer">
+    <p>© 2026 Mansha Designs — All rights reserved.</p>
+    <p style="margin-top: 6px;">📧 hello@manshapandey007@gmail.com | 📍 India</p>
+</footer>
+
+</body>
+</html>
