@@ -1,1 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>My Portfolio | Your Name</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #f8fafc;
+            color: #0f172a;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* header */
+        .site-header {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .tagline {
+            color: #475569;
+            font-size: 0.95rem;
+        }
+
+        /* sections */
+        section {
+            padding: 3rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: #0f172a;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background: #3b82f6;
+            border-radius: 3px;
+        }
+
+        /* about */
+        .about-grid {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .about-img img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 9999px;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+            border: 3px solid white;
+        }
+        .about-text {
+            flex: 1;
+        }
+
+        /* skills */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .skill-badge {
+            background: #e2e8f0;
+            padding: 6px 16px;
+            border-radius: 40px;
+            font-weight: 500;
+            color: #1e293b;
+        }
+
+        /* projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .project-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+        .project-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            background: #cbd5e1;
+        }
+        .project-info {
+            padding: 1.2rem;
+        }
+        .project-info h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        /* resume & contact */
+        .resume-link {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            padding: 10px 24px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 8px;
+        }
+        .contact-info p {
+            margin: 8px 0;
+        }
+
+        /* footer */
+        .site-footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #475569;
+            background: #f1f5f9;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 700px) {
+            .about-grid {
+                flex-direction: column;
+                text-align: center;
+            }
+            .section-title::after {
+                left: 25%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <div class="container header-inner">
+        <div>
+            <div class="logo">Mansha Pandey</div>
+            <div class="tagline">Computer Science student| Web dev intern</div>
+        </div>
+        <div>✨ clean code & modern design</div>
+    </div>
+</header>
+
+<main class="container">
+    <!-- About section -->
+    <section id="about">
+        <h2 class="section-title">About me</h2>
+        <div class="about-grid">
+            <div class="about-img">
+                <!-- Replace with your real image path -->
+                <img src="https://placehold.co/400x400/e2e8f0/334155?text=Your+Photo" alt="profile photo">
+            </div>
+            <div class="about-text">
+                <p>Hi, I'm Mansha – a self‑taught web developer who loves turning ideas into responsive, user‑friendly websites. I have experience building small business sites and personal projects using HTML, CSS, JavaScript, and React basics.</p>
+                <p>Currently a Btech 3rd year student looking for an internship to grow further. I focus on writing clean, maintainable code.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-list">
+            <span class="skill-badge">HTML & CSS(basic)</span>
+            <span class="skill-badge">JavaScript(basic)</span>
+            <span class="skill-badge">React (basic)</span>
+            <span class="skill-badge">Responsive Design</span>
+            <span class="skill-badge">Git & GitHub</span>
+            <span class="skill-badge">Python basics</span>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="https://placehold.co/600x400/1e293b/ffffff?text=To-Do+App" alt="todo app preview">
+                <div class="project-info">
+                    <h3>My Portfolio Websites</h3>
+                    <p>A fully responsive personal portfolio built from scratch using HTML & CSS.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="https://placehold.co/600x400/334155/f8fafc?text=Weather+Widget" alt="weather widget">
+                <div class="project-info">
+                    <h3>Basic Calculator(coming soon)</h3>
+                    <p>Interactive calculator with addition, subtraction, division, multiplication. Made with JavaScript.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="https://placehold.co/600x400/0f172a/cbd5e1?text=Portfolio" alt="portfolio design">
+                <div class="project-info">
+                    <h3>E-commerce Landing Page(coming soon)</h3>
+                    <p>A product landing page with columns,CTA buttons and newsletter signup- responsive design.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume section -->
+    <section id="resume">
+        <h2 class="section-title">Resume</h2>
+        <p>Download my full CV (PDF) to see my work experience and education details.</p>
+        <!-- Create a dummy PDF or upload your real one -->
+        <a href="#" class="resume-link" download>📄 Download Resume (PDF)</a>
+        <p style="margin-top: 12px; font-size: 0.85rem;">*replace '#' with actual path to your resume.pdf</p>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <h2 class="section-title">Contact</h2>
+        <div class="contact-info">
+            <p>📧 <strong>Email:</strong> manshapandey007@example.com</p>
+            <p>📞 <strong>Phone:</strong> +91 8188884253</p>
+            <p>🌍 <strong>GitHub:</strong> github.com/manshapandey15</p>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="container">
+        <p>© 2026 Mansha Pandey – Built with HTML & CSS from scratch.</p>
+        <p style="font-size: 0.8rem;">📍 Based in Lucknow, India</p>
+    </div>
+</footer>
+
+</body>
+</html>
